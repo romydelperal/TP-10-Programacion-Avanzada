@@ -1,0 +1,41 @@
+TRABAJO PRACTICO Nº10 PROGRAMACION AVANZADA
+
+Alumnos: del Peral Acevedo Paola Romina, Dodero Leonel Iván
+
+Ejercicio 1
+La critica principal es que intentar aplicar patrones de diseño en Python lleva a escribir código complejo y difícil de seguir, cuando podrías haber resuelto lo mismo con funciones simples y estructuras nativas.
+Ejemplo: El patrón Strategy:
+En otros lenguajes: Necesitas crear una interfaz, varias clases concretas que implementen esa interfaz y un objeto que las utilice.
+En Python: Como las funciones son objetos de primera clase, simplemente puedes pasar una función como argumento a otra.
+Critica: crear una jerarquía de clases para algo que una simple función puede hacer, es complicar las cosas innecesariamente.
+Ejemplo: El patrón Factory Method:
+Python permite evitar burocracia de las clases cuando no es necesaria.
+Si tienes diferentes tipos de objetos que quieres crear, el patrón Factory te obliga a crear:
+1.	Una clase “Fábrica” abstracta.
+2.	Una clase “Fábrica” concreta para cada tipo de conexión.
+3.	El código cliente que interactúa con estas fábricas.
+En Python esto se considera a menudo una sobreingeniería. Porque Python permite tratar a las clases como objetos y tiene diccionarios que pueden hacer el trabajo de forma mucho más limpia.
+
+Ejercicio 3
+Pensando en situaciones cotidianas donde se aplican conceptos similares a los patrones:
+Mando a distancia: Cada botón del control remoto encapsula una solicitud específica sin que el usuario necesite saber cómo el televisor procesa internamente la señal.
+Semáforo: Un semáforo cambia su comportamiento basándose en su estado interno. Dependiendo de en qué "estado" se encuentre, el mismo objeto reacciona de manera distinta ante el paso del tiempo o sensores vehiculares, lo cual es la esencia del patrón State, que permite a un objeto alterar su comportamiento cuando su estado interno cambia.
+Adaptador de enchufes: Cuando se viaja a un país con un tipo de tomacorriente diferente al de los dispositivos, se utiliza un adaptador físico. Este objeto actúa exactamente como el patrón Adapter, permitiendo que dos "interfaces" que son incompatibles entre sí puedan colaborar y funcionar juntas.
+
+
+Ejercicio 4
+Patrón de Diseño    	Nombres Alternativos / Denominaciones
+Proxy            	    Sustituto, Marcador de posición, Surrogate.
+Decorator	            Encapsulador.
+Adapter	              Adaptador.
+Strategy	            Policy, Política.
+Observer	            Publish-Subscribe, Publicador-Suscriptor, Dependents.
+Facade	              Fachada.
+
+Ejercicio 5
+Los antipatrones de diseño son soluciones que resultan ser ineficaces, contraproducentes o generan consecuencias negativas a largo plazo. Se consideran el opuesto de los patrones de diseño, que son soluciones comprobadas y recomendadas.
+Ejemplos de antipatrones comunes:
+•	God Object: Se refiere a una clase que asume demasiadas responsabilidades y funciones dentro de un sistema. Al intentar hacer "de todo", se vuelve extremadamente compleja, difícil de mantener y viola el principio de responsabilidad única.
+•	Spaghetti Code: Es un programa cuya estructura de control es difícil de seguir debido a un flujo complejo, enredado y sin una arquitectura clara. Suele carecer de una correcta aplicación de patrones estructurales.
+•	Golden Hammer: Consiste en la obsesión por utilizar una misma tecnología, herramienta o patrón de diseño para todos los problemas, incluso cuando no es la opción adecuada, simplemente por familiaridad.
+•	Hard Coding: Es la práctica de incluir datos de configuración o valores fijos directamente en el código fuente en lugar de obtenerlos de fuentes externas (como archivos de configuración o bases de datos), lo que dificulta cualquier cambio futuro.
