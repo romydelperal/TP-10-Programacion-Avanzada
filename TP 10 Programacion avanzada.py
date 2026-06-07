@@ -1,0 +1,81 @@
+#Ejercicio 2:
+#Seleccione 3 patrones de diseño e implementarlos en Python. Arme ejemplos concretos de uso. Lo ideal es
+#elegir un patrón de cada clasificación.
+
+#Patrón Creacional: Singleton
+#Una clase que gestione la conexión a una base de datos, donde no queremos múltiples conexiones abiertas simultáneamente.
+
+class DatabaseConnection:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            # Crea la instancia solo si no existe
+            cls._instance = super(DatabaseConnection, cls).__new__(cls)
+            print("Conectando a la base de datos...")
+        return cls._instance
+
+# Uso del patrón
+db1 = DatabaseConnection()
+db2 = DatabaseConnection()
+
+print(f"¿Son la misma instancia?: {db1 is db2}")
+
+
+#Patrón Estructural: Facade 
+#Un sistema de "Cine en Casa" donde un solo botón de "Ver película" activa el proyector, baja las luces y enciende el sonido, ocultando la complejidad de cada subsistema.
+
+class Proyector:
+    def encender(self): print("Proyector encendido")
+
+class Sonido:
+    def configurar_volumen(self): print("Audio configurado al 50%")
+
+class Luces:
+    def atenuar(self): print("Luces atenuadas")
+
+class FachadaCine:
+    def __init__(self):
+        self.proyector = Proyector()
+        self.sonido = Sonido()
+        self.luces = Luces()
+
+    def ver_pelicula(self):
+        print("Preparando el cine...")
+        self.luces.atenuar()
+        self.proyector.encender()
+        self.sonido.configurar_volumen()
+        print("¡Disfruta la función!")
+
+# Uso del patrón
+cine = FachadaCine()
+cine.ver_pelicula()
+
+#Patrón de Comportamiento: Strategy 
+#Un carrito de compras que permite elegir dinámicamente el método de pago sin cambiar el código del carrito.
+
+from abc import ABC, abstractmethod
+
+class MetodoPago(ABC):
+    @abstractmethod
+    def pagar(self, monto): pass
+
+class PagoTarjeta(MetodoPago):
+    def pagar(self, monto): print(f"Pagando ${monto} con Tarjeta de Crédito")
+
+class PagoPayPal(MetodoPago):
+    def pagar(self, monto): print(f"Pagando ${monto} con PayPal")
+
+class CarritoCompras:
+    def __init__(self, estrategia_pago: MetodoPago):
+        self.estrategia_pago = estrategia_pago
+
+    def procesar_compra(self, total):
+        self.estrategia_pago.pagar(total)
+
+# Uso del patrón
+compra1 = CarritoCompras(PagoTarjeta())
+compra1.procesar_compra(1500)
+
+compra2 = CarritoCompras(PagoPayPal())
+compra2.procesar_compra(2000)
